@@ -9,11 +9,13 @@
 #ifndef simd_compare_hpp
 #define simd_compare_hpp
 
+#include <immintrin.h>
 #include "skip_edge_check.hpp"
 
 class SimdCompare : public SkipEdgeCheck {
 protected:
     void GenerateSDF(Grid &g) override;
+    void GroupCompare(Grid &g, int x, int y, __m256i& offsets);
 };
 
 #endif /* simd_compare_hpp */

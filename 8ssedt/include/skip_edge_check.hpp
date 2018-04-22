@@ -13,6 +13,7 @@
 
 class SkipEdgeCheck : public Original {
 protected:
+    Point empty = { 16384, 16384 };
     inline Point Get(Grid &g, int x, int y) override {
         return g.points[(y + 1) * gridWidth + (x + 1)];
     }

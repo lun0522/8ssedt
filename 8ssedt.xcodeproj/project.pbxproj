@@ -318,6 +318,7 @@
 				CLANG_X86_VECTOR_INSTRUCTIONS = avx2;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DXJ7AC4744;
+				GCC_OPTIMIZATION_LEVEL = s;
 				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/6.0.0/include;
 				LIBRARY_SEARCH_PATHS = (
 					/usr/local/opt/llvm/lib,
