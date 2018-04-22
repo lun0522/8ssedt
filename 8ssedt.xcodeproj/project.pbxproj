@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD1563AE208ADD6F006654E8 /* libomp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1563AD208ADD6F006654E8 /* libomp.dylib */; };
+		BD25292B208B9921001066E8 /* original.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD252929208B9921001066E8 /* original.cpp */; };
+		BD25292E208BA16A001066E8 /* skip_edge_check.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD25292C208BA16A001066E8 /* skip_edge_check.cpp */; };
+		BD3E8CE6208AE3E9003BB4EA /* test.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = BD3E8CE5208AE3B5003BB4EA /* test.jpg */; };
 		BD6F4822208ABEFD00E65208 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD6F4821208ABEFD00E65208 /* main.cpp */; };
-		BD6F4830208AD8B600E65208 /* test.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = BD6F482F208AD8B000E65208 /* test.jpg */; };
+		BDCEA11F208C1D7D00572751 /* simd_compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDCEA11D208C1D7D00572751 /* simd_compare.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,18 +22,26 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				BD6F4830208AD8B600E65208 /* test.jpg in CopyFiles */,
+				BD3E8CE6208AE3E9003BB4EA /* test.jpg in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BD1563AD208ADD6F006654E8 /* libomp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libomp.dylib; path = ../../../../../usr/local/Cellar/llvm/6.0.0/lib/libomp.dylib; sourceTree = "<group>"; };
+		BD252929208B9921001066E8 /* original.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = original.cpp; sourceTree = "<group>"; };
+		BD25292A208B9921001066E8 /* original.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = original.hpp; sourceTree = "<group>"; };
+		BD25292C208BA16A001066E8 /* skip_edge_check.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = skip_edge_check.cpp; sourceTree = "<group>"; };
+		BD25292D208BA16A001066E8 /* skip_edge_check.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = skip_edge_check.hpp; sourceTree = "<group>"; };
+		BD2D2C85208BBE7000DC0444 /* sdf.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sdf.hpp; sourceTree = "<group>"; };
+		BD3E8CE5208AE3B5003BB4EA /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		BD6F481E208ABEFD00E65208 /* 8ssedt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 8ssedt; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD6F4821208ABEFD00E65208 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		BD6F482B208AC76100E65208 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		BD6F482C208AC76800E65208 /* stb_image_write.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
-		BD6F482F208AD8B000E65208 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
+		BDCEA11D208C1D7D00572751 /* simd_compare.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = simd_compare.cpp; sourceTree = "<group>"; };
+		BDCEA11E208C1D7D00572751 /* simd_compare.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = simd_compare.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +49,51 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD1563AE208ADD6F006654E8 /* libomp.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD1563AC208ADD6F006654E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD1563AD208ADD6F006654E8 /* libomp.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD2D2C87208BC10E00DC0444 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				BD6F4821208ABEFD00E65208 /* main.cpp */,
+				BD252929208B9921001066E8 /* original.cpp */,
+				BD25292C208BA16A001066E8 /* skip_edge_check.cpp */,
+				BDCEA11D208C1D7D00572751 /* simd_compare.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		BD2D2C88208BC11500DC0444 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				BD6F482B208AC76100E65208 /* stb_image.h */,
+				BD6F482C208AC76800E65208 /* stb_image_write.h */,
+				BD2D2C85208BBE7000DC0444 /* sdf.hpp */,
+				BD25292A208B9921001066E8 /* original.hpp */,
+				BD25292D208BA16A001066E8 /* skip_edge_check.hpp */,
+				BDCEA11E208C1D7D00572751 /* simd_compare.hpp */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		BD6F4815208ABEFD00E65208 = {
 			isa = PBXGroup;
 			children = (
 				BD6F4820208ABEFD00E65208 /* 8ssedt */,
 				BD6F481F208ABEFD00E65208 /* Products */,
+				BD1563AC208ADD6F006654E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,10 +108,9 @@
 		BD6F4820208ABEFD00E65208 /* 8ssedt */ = {
 			isa = PBXGroup;
 			children = (
-				BD6F482B208AC76100E65208 /* stb_image.h */,
-				BD6F482C208AC76800E65208 /* stb_image_write.h */,
-				BD6F4821208ABEFD00E65208 /* main.cpp */,
-				BD6F482F208AD8B000E65208 /* test.jpg */,
+				BD2D2C88208BC11500DC0444 /* include */,
+				BD2D2C87208BC10E00DC0444 /* src */,
+				BD3E8CE5208AE3B5003BB4EA /* test.jpg */,
 			);
 			path = 8ssedt;
 			sourceTree = "<group>";
@@ -126,6 +171,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDCEA11F208C1D7D00572751 /* simd_compare.cpp in Sources */,
+				BD25292B208B9921001066E8 /* original.cpp in Sources */,
+				BD25292E208BA16A001066E8 /* skip_edge_check.cpp in Sources */,
 				BD6F4822208ABEFD00E65208 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,8 +293,19 @@
 		BD6F4826208ABEFD00E65208 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CC = /usr/local/opt/llvm/bin/clang;
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_X86_VECTOR_INSTRUCTIONS = avx2;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DXJ7AC4744;
+				GCC_OPTIMIZATION_LEVEL = s;
+				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/6.0.0/include;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/opt/llvm/lib,
+					/usr/local/Cellar/llvm/6.0.0/lib,
+				);
+				OTHER_CFLAGS = "-fopenmp";
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -254,8 +313,18 @@
 		BD6F4827208ABEFD00E65208 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CC = /usr/local/opt/llvm/bin/clang;
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_X86_VECTOR_INSTRUCTIONS = avx2;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DXJ7AC4744;
+				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/6.0.0/include;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/opt/llvm/lib,
+					/usr/local/Cellar/llvm/6.0.0/lib,
+				);
+				OTHER_CFLAGS = "-fopenmp";
+				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
