@@ -27,7 +27,7 @@ void SkipEdgeCheck::loadImage(int width, int height, unsigned char* image) {
             }
         }
     }
-    for (int x = 0; x < width; ++x) { // top and buttom padding
+    for (int x = 0; x < imageWidth; ++x) { // top and buttom padding
         Put(grid2, x, -1, Get(grid2, x, 0));
         Put(grid1, x, -1, Get(grid1, x, 0));
         Put(grid2, x, imageHeight, Get(grid2, x, imageHeight - 1));

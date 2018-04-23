@@ -18,7 +18,7 @@ protected:
         return g.points[(y + 1) * gridWidth + (x + 1)];
     }
     inline void Put(Grid &g, int x, int y, const Point &p) override {
-        g.points[(y + 1) * gridHeight + (x + 1)] = p;
+        g.points[(y + 1) * gridWidth + (x + 1)] = p;
     }
 public:
     void loadImage(int width, int height, unsigned char* image) override;

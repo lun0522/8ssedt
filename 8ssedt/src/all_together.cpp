@@ -18,7 +18,7 @@ inline AllTogether::Point AllTogether::get(Grid &g, int x, int y) {
 }
 
 inline void AllTogether::put(Grid &g, int x, int y, const Point &p) {
-    g.points[(y + 1) * gridHeight + (x + 1)] = p;
+    g.points[(y + 1) * gridWidth + (x + 1)] = p;
 }
 
 void AllTogether::loadImage(int width, int height, unsigned char* image) {
@@ -40,7 +40,7 @@ void AllTogether::loadImage(int width, int height, unsigned char* image) {
             }
         }
     }
-    for (int x = 0; x < width; ++x) { // top and buttom padding
+    for (int x = 0; x < imageWidth; ++x) { // top and buttom padding
         put(grid2, x, -1, get(grid2, x, 0));
         put(grid1, x, -1, get(grid1, x, 0));
         put(grid2, x, imageHeight, get(grid2, x, imageHeight - 1));
