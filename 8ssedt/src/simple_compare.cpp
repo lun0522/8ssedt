@@ -15,8 +15,9 @@ void SimpleCompare::GenerateSDF(Grid &g) {
         for (int x = 0; x < imageWidth; ++x)
             GroupCompare(g, x, y, offsets0);
         
+        Point prev = empty;
         for (int x = imageWidth - 1; x >= 0; --x)
-            SingleCompare(g, x, y, 1, 0);
+            prev = SingleCompare(g, x, y, 1, 0, prev);
     }
     
     // Pass 1
@@ -25,7 +26,8 @@ void SimpleCompare::GenerateSDF(Grid &g) {
         for (int x = imageWidth - 1; x >= 0; --x)
             GroupCompare(g, x, y, offsets1);
         
+        Point prev = empty;
         for (int x = 0; x < imageWidth; ++x)
-            SingleCompare(g, x, y, -1, 0);
+            prev = SingleCompare(g, x, y, -1, 0, prev);
     }
 }

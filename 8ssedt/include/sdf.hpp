@@ -11,20 +11,20 @@
 
 #include <string>
 
-struct Point
-{
-    int dx, dy;
-    
-    int DistSq() const { return dx*dx + dy*dy; }
-};
-
-struct Grid
-{
-    Point *points;
-};
-
 class SDF {
 protected:
+    struct Point
+    {
+        int dx, dy;
+        
+        int DistSq() const { return dx*dx + dy*dy; }
+    };
+    
+    struct Grid
+    {
+        Point *points;
+    };
+    
     int imageWidth, imageHeight;
     int gridWidth, gridHeight, numPoint;
     Grid grid1, grid2;

@@ -1,8 +1,8 @@
 //
-//  original.cpp
+//  plain_original.cpp
 //  8ssedt
 //
-//  Created by Pujun Lun on 4/21/18.
+//  Created by Pujun Lun on 4/23/18.
 //  Copyright © 2018 Pujun Lun. All rights reserved.
 //
 
@@ -11,9 +11,9 @@
 #include <chrono>
 #include "stb_image.h"
 #include "stb_image_write.h"
-#include "original.hpp"
+#include "plain_original.hpp"
 
-Original::Point Original::Get( Grid &g, int x, int y )
+PlainOriginal::Point PlainOriginal::Get( Grid &g, int x, int y )
 {
     // OPTIMIZATION: you can skip the edge check code if you make your grid
     // have a 1-pixel gutter.
@@ -23,12 +23,12 @@ Original::Point Original::Get( Grid &g, int x, int y )
         return empty;
 }
 
-void Original::Put( Grid &g, int x, int y, const Point &p )
+void PlainOriginal::Put( Grid &g, int x, int y, const Point &p )
 {
     g.points[y*imageWidth+x] = p;
 }
 
-void Original::Compare( Grid &g, Point &p, int x, int y, int offsetx, int offsety )
+void PlainOriginal::Compare( Grid &g, Point &p, int x, int y, int offsetx, int offsety )
 {
     Point other = Get( g, x+offsetx, y+offsety );
     other.dx += offsetx;
@@ -38,7 +38,7 @@ void Original::Compare( Grid &g, Point &p, int x, int y, int offsetx, int offset
         p = other;
 }
 
-void Original::GenerateSDF( Grid &g )
+void PlainOriginal::GenerateSDF( Grid &g )
 {
     // Pass 0
     for (int y=0;y<imageHeight;y++)
@@ -52,7 +52,7 @@ void Original::GenerateSDF( Grid &g )
             Compare( g, p, x, y,  1, -1 );
             Put( g, x, y, p );
         }
-
+        
         for (int x=imageWidth-1;x>=0;x--)
         {
             Point p = Get( g, x, y );
@@ -60,7 +60,7 @@ void Original::GenerateSDF( Grid &g )
             Put( g, x, y, p );
         }
     }
-
+    
     // Pass 1
     for (int y=imageHeight-1;y>=0;y--)
     {
@@ -73,7 +73,7 @@ void Original::GenerateSDF( Grid &g )
             Compare( g, p, x, y,  1,  1 );
             Put( g, x, y, p );
         }
-
+        
         for (int x=0;x<imageWidth;x++)
         {
             Point p = Get( g, x, y );
@@ -83,7 +83,7 @@ void Original::GenerateSDF( Grid &g )
     }
 }
 
-void Original::loadImage( int width, int height, unsigned char* image ) {
+void PlainOriginal::loadImage( int width, int height, unsigned char* image ) {
     imageWidth = gridWidth = width;
     imageHeight = gridHeight = height;
     numPoint = gridWidth * gridHeight;
@@ -102,7 +102,7 @@ void Original::loadImage( int width, int height, unsigned char* image ) {
     }
 }
 
-void Original::run( int repeat, const std::string& name ) {
+void PlainOriginal::run( int repeat, const std::string& name ) {
     std::cout << "Running " << name << "..." << std::endl;
     double elaspsedTime = 0.0;
     Grid testGrid1, testGrid2;
@@ -111,7 +111,7 @@ void Original::run( int repeat, const std::string& name ) {
     for (int i = 0; i < repeat; ++i) {
         memcpy(testGrid1.points, grid1.points, numPoint * sizeof(Point));
         memcpy(testGrid2.points, grid2.points, numPoint * sizeof(Point));
-
+        
         auto start = std::chrono::system_clock::now();
         GenerateSDF(testGrid1);
         GenerateSDF(testGrid2);
@@ -143,7 +143,7 @@ void Original::run( int repeat, const std::string& name ) {
     if (testGrid2.points) free(testGrid2.points);
 }
 
-Original::~Original() {
+PlainOriginal::~PlainOriginal() {
     if (grid1.points) free(grid1.points);
     if (grid2.points) free(grid2.points);
     std::cout << "Grids freed" << std::endl;

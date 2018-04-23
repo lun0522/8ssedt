@@ -12,6 +12,8 @@
 		BD3E8CE6208AE3E9003BB4EA /* test.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = BD3E8CE5208AE3B5003BB4EA /* test.jpg */; };
 		BD6F4822208ABEFD00E65208 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD6F4821208ABEFD00E65208 /* main.cpp */; };
 		BD993231208DA9B6007656A1 /* simple_compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD99322F208DA9B6007656A1 /* simple_compare.cpp */; };
+		BDA89215208DE0E600B60278 /* all_together.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDA89213208DE0E600B60278 /* all_together.cpp */; };
+		BDA89218208DEA0400B60278 /* plain_original.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDA89216208DEA0400B60278 /* plain_original.cpp */; };
 		BDCEA11F208C1D7D00572751 /* simd_compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDCEA11D208C1D7D00572751 /* simd_compare.cpp */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,10 @@
 		BD6F482C208AC76800E65208 /* stb_image_write.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
 		BD99322F208DA9B6007656A1 /* simple_compare.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = simple_compare.cpp; sourceTree = "<group>"; };
 		BD993230208DA9B6007656A1 /* simple_compare.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = simple_compare.hpp; sourceTree = "<group>"; };
+		BDA89213208DE0E600B60278 /* all_together.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = all_together.cpp; sourceTree = "<group>"; };
+		BDA89214208DE0E600B60278 /* all_together.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = all_together.hpp; sourceTree = "<group>"; };
+		BDA89216208DEA0400B60278 /* plain_original.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = plain_original.cpp; sourceTree = "<group>"; };
+		BDA89217208DEA0400B60278 /* plain_original.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = plain_original.hpp; sourceTree = "<group>"; };
 		BDCEA11D208C1D7D00572751 /* simd_compare.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = simd_compare.cpp; sourceTree = "<group>"; };
 		BDCEA11E208C1D7D00572751 /* simd_compare.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = simd_compare.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -73,6 +79,8 @@
 				BD25292C208BA16A001066E8 /* skip_edge_check.cpp */,
 				BDCEA11D208C1D7D00572751 /* simd_compare.cpp */,
 				BD99322F208DA9B6007656A1 /* simple_compare.cpp */,
+				BDA89216208DEA0400B60278 /* plain_original.cpp */,
+				BDA89213208DE0E600B60278 /* all_together.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -87,6 +95,8 @@
 				BD25292D208BA16A001066E8 /* skip_edge_check.hpp */,
 				BDCEA11E208C1D7D00572751 /* simd_compare.hpp */,
 				BD993230208DA9B6007656A1 /* simple_compare.hpp */,
+				BDA89217208DEA0400B60278 /* plain_original.hpp */,
+				BDA89214208DE0E600B60278 /* all_together.hpp */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -175,9 +185,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDCEA11F208C1D7D00572751 /* simd_compare.cpp in Sources */,
+				BDA89215208DE0E600B60278 /* all_together.cpp in Sources */,
 				BD25292B208B9921001066E8 /* original.cpp in Sources */,
 				BD25292E208BA16A001066E8 /* skip_edge_check.cpp in Sources */,
 				BD6F4822208ABEFD00E65208 /* main.cpp in Sources */,
+				BDA89218208DEA0400B60278 /* plain_original.cpp in Sources */,
 				BD993231208DA9B6007656A1 /* simple_compare.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -20,6 +20,8 @@
 #include "skip_edge_check.hpp"
 #include "simd_compare.hpp"
 #include "simple_compare.hpp"
+#include "plain_original.hpp"
+#include "all_together.hpp"
 
 int width, height;
 stbi_uc *image;
@@ -48,6 +50,9 @@ int main(int argc, const char * argv[]) {
     run<SkipEdgeCheck>("skip_edge_check");
     run<SimdCompare>("simd_compare");
     run<SimpleCompare>("simple_compare");
+    
+    run<PlainOriginal>("plain_original");
+    run<AllTogether>("all_together");
     
     stbi_image_free(image);
     return 0;
