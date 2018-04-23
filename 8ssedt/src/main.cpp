@@ -6,7 +6,6 @@
 //  Copyright © 2018 Pujun Lun. All rights reserved.
 //
 //  Modified from http://www.codersnotes.com/notes/signed-distance-fields/
-//  Setting up OpenMP for Xcode: http://antonmenshov.com/2017/09/09/clang-openmp-setup-in-xcode/
 //  May need to specify a flag for: Build Settings -> Code Generation -> Optimization Level -> Debug
 //  Also set Build Settings -> Code Generation -> Enable Additional Vector Extensions to AVX 2
 
@@ -17,10 +16,10 @@
 #include "stb_image.h"
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
-#include "omp.h"
 #include "original.hpp"
 #include "skip_edge_check.hpp"
 #include "simd_compare.hpp"
+#include "simple_compare.hpp"
 
 int width, height;
 stbi_uc *image;
@@ -48,6 +47,7 @@ int main(int argc, const char * argv[]) {
     run<Original>("original");
     run<SkipEdgeCheck>("skip_edge_check");
     run<SimdCompare>("simd_compare");
+    run<SimpleCompare>("simple_compare");
     
     stbi_image_free(image);
     return 0;

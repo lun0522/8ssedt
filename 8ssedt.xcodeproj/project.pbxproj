@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD1563AE208ADD6F006654E8 /* libomp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BD1563AD208ADD6F006654E8 /* libomp.dylib */; };
 		BD25292B208B9921001066E8 /* original.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD252929208B9921001066E8 /* original.cpp */; };
 		BD25292E208BA16A001066E8 /* skip_edge_check.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD25292C208BA16A001066E8 /* skip_edge_check.cpp */; };
 		BD3E8CE6208AE3E9003BB4EA /* test.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = BD3E8CE5208AE3B5003BB4EA /* test.jpg */; };
 		BD6F4822208ABEFD00E65208 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD6F4821208ABEFD00E65208 /* main.cpp */; };
+		BD993231208DA9B6007656A1 /* simple_compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD99322F208DA9B6007656A1 /* simple_compare.cpp */; };
 		BDCEA11F208C1D7D00572751 /* simd_compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BDCEA11D208C1D7D00572751 /* simd_compare.cpp */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +40,8 @@
 		BD6F4821208ABEFD00E65208 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		BD6F482B208AC76100E65208 /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
 		BD6F482C208AC76800E65208 /* stb_image_write.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
+		BD99322F208DA9B6007656A1 /* simple_compare.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = simple_compare.cpp; sourceTree = "<group>"; };
+		BD993230208DA9B6007656A1 /* simple_compare.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = simple_compare.hpp; sourceTree = "<group>"; };
 		BDCEA11D208C1D7D00572751 /* simd_compare.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = simd_compare.cpp; sourceTree = "<group>"; };
 		BDCEA11E208C1D7D00572751 /* simd_compare.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = simd_compare.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -49,7 +51,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD1563AE208ADD6F006654E8 /* libomp.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +72,7 @@
 				BD252929208B9921001066E8 /* original.cpp */,
 				BD25292C208BA16A001066E8 /* skip_edge_check.cpp */,
 				BDCEA11D208C1D7D00572751 /* simd_compare.cpp */,
+				BD99322F208DA9B6007656A1 /* simple_compare.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -84,6 +86,7 @@
 				BD25292A208B9921001066E8 /* original.hpp */,
 				BD25292D208BA16A001066E8 /* skip_edge_check.hpp */,
 				BDCEA11E208C1D7D00572751 /* simd_compare.hpp */,
+				BD993230208DA9B6007656A1 /* simple_compare.hpp */,
 			);
 			path = include;
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 				BD25292B208B9921001066E8 /* original.cpp in Sources */,
 				BD25292E208BA16A001066E8 /* skip_edge_check.cpp in Sources */,
 				BD6F4822208ABEFD00E65208 /* main.cpp in Sources */,
+				BD993231208DA9B6007656A1 /* simple_compare.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,18 +297,14 @@
 		BD6F4826208ABEFD00E65208 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CC = /usr/local/opt/llvm/bin/clang;
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_X86_VECTOR_INSTRUCTIONS = avx2;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DXJ7AC4744;
 				GCC_OPTIMIZATION_LEVEL = s;
-				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/6.0.0/include;
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/opt/llvm/lib,
-					/usr/local/Cellar/llvm/6.0.0/lib,
-				);
-				OTHER_CFLAGS = "-fopenmp";
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -313,18 +313,14 @@
 		BD6F4827208ABEFD00E65208 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CC = /usr/local/opt/llvm/bin/clang;
-				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_X86_VECTOR_INSTRUCTIONS = avx2;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DXJ7AC4744;
 				GCC_OPTIMIZATION_LEVEL = s;
-				HEADER_SEARCH_PATHS = /usr/local/opt/llvm/lib/clang/6.0.0/include;
-				LIBRARY_SEARCH_PATHS = (
-					/usr/local/opt/llvm/lib,
-					/usr/local/Cellar/llvm/6.0.0/lib,
-				);
-				OTHER_CFLAGS = "-fopenmp";
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
+				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
