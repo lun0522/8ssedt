@@ -1,17 +1,17 @@
 //
-//  skip_edge_check.hpp
+//  avoid_edge_check.hpp
 //  8ssedt
 //
 //  Created by Pujun Lun on 4/21/18.
 //  Copyright © 2018 Pujun Lun. All rights reserved.
 //
 
-#ifndef skip_edge_check_hpp
-#define skip_edge_check_hpp
+#ifndef avoid_edge_check_hpp
+#define avoid_edge_check_hpp
 
 #include "original.hpp"
 
-class SkipEdgeCheck : public Original {
+class AvoidEdgeCheck : public Original {
 protected:
     Point empty = { 16384, 16384 };
     inline Point Get(Grid &g, int x, int y) override {
@@ -24,4 +24,4 @@ public:
     void loadImage(int width, int height, unsigned char* image) override;
 };
 
-#endif /* skip_edge_check_hpp */
+#endif /* avoid_edge_check_hpp */

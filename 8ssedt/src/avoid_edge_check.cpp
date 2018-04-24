@@ -1,14 +1,14 @@
 //
-//  skip_edge_check.cpp
+//  avoid_edge_check.cpp
 //  8ssedt
 //
 //  Created by Pujun Lun on 4/21/18.
 //  Copyright © 2018 Pujun Lun. All rights reserved.
 //
 
-#include "skip_edge_check.hpp"
+#include "avoid_edge_check.hpp"
 
-void SkipEdgeCheck::loadImage(int width, int height, unsigned char* image) {
+void AvoidEdgeCheck::loadImage(int width, int height, unsigned char* image) {
     imageWidth = width;
     imageHeight = height;
     gridWidth = imageWidth + 2;

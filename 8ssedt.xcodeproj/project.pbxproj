@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD25292B208B9921001066E8 /* original.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD252929208B9921001066E8 /* original.cpp */; };
-		BD25292E208BA16A001066E8 /* skip_edge_check.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD25292C208BA16A001066E8 /* skip_edge_check.cpp */; };
+		BD25292E208BA16A001066E8 /* avoid_edge_check.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD25292C208BA16A001066E8 /* avoid_edge_check.cpp */; };
 		BD3E8CE6208AE3E9003BB4EA /* test.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = BD3E8CE5208AE3B5003BB4EA /* test.jpg */; };
 		BD6F4822208ABEFD00E65208 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD6F4821208ABEFD00E65208 /* main.cpp */; };
 		BD993231208DA9B6007656A1 /* simple_compare.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD99322F208DA9B6007656A1 /* simple_compare.cpp */; };
@@ -34,8 +34,8 @@
 		BD1563AD208ADD6F006654E8 /* libomp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libomp.dylib; path = ../../../../../usr/local/Cellar/llvm/6.0.0/lib/libomp.dylib; sourceTree = "<group>"; };
 		BD252929208B9921001066E8 /* original.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = original.cpp; sourceTree = "<group>"; };
 		BD25292A208B9921001066E8 /* original.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = original.hpp; sourceTree = "<group>"; };
-		BD25292C208BA16A001066E8 /* skip_edge_check.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = skip_edge_check.cpp; sourceTree = "<group>"; };
-		BD25292D208BA16A001066E8 /* skip_edge_check.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = skip_edge_check.hpp; sourceTree = "<group>"; };
+		BD25292C208BA16A001066E8 /* avoid_edge_check.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = avoid_edge_check.cpp; sourceTree = "<group>"; };
+		BD25292D208BA16A001066E8 /* avoid_edge_check.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = avoid_edge_check.hpp; sourceTree = "<group>"; };
 		BD2D2C85208BBE7000DC0444 /* sdf.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = sdf.hpp; sourceTree = "<group>"; };
 		BD3E8CE5208AE3B5003BB4EA /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		BD6F481E208ABEFD00E65208 /* 8ssedt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 8ssedt; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,7 +76,7 @@
 			children = (
 				BD6F4821208ABEFD00E65208 /* main.cpp */,
 				BD252929208B9921001066E8 /* original.cpp */,
-				BD25292C208BA16A001066E8 /* skip_edge_check.cpp */,
+				BD25292C208BA16A001066E8 /* avoid_edge_check.cpp */,
 				BDCEA11D208C1D7D00572751 /* simd_compare.cpp */,
 				BD99322F208DA9B6007656A1 /* simple_compare.cpp */,
 				BDA89216208DEA0400B60278 /* plain_original.cpp */,
@@ -92,7 +92,7 @@
 				BD6F482C208AC76800E65208 /* stb_image_write.h */,
 				BD2D2C85208BBE7000DC0444 /* sdf.hpp */,
 				BD25292A208B9921001066E8 /* original.hpp */,
-				BD25292D208BA16A001066E8 /* skip_edge_check.hpp */,
+				BD25292D208BA16A001066E8 /* avoid_edge_check.hpp */,
 				BDCEA11E208C1D7D00572751 /* simd_compare.hpp */,
 				BD993230208DA9B6007656A1 /* simple_compare.hpp */,
 				BDA89217208DEA0400B60278 /* plain_original.hpp */,
@@ -187,7 +187,7 @@
 				BDCEA11F208C1D7D00572751 /* simd_compare.cpp in Sources */,
 				BDA89215208DE0E600B60278 /* all_together.cpp in Sources */,
 				BD25292B208B9921001066E8 /* original.cpp in Sources */,
-				BD25292E208BA16A001066E8 /* skip_edge_check.cpp in Sources */,
+				BD25292E208BA16A001066E8 /* avoid_edge_check.cpp in Sources */,
 				BD6F4822208ABEFD00E65208 /* main.cpp in Sources */,
 				BDA89218208DEA0400B60278 /* plain_original.cpp in Sources */,
 				BD993231208DA9B6007656A1 /* simple_compare.cpp in Sources */,

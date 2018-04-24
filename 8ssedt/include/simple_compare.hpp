@@ -13,7 +13,8 @@
 
 class SimpleCompare : public SimdCompare {
 protected:
-    inline Point SingleCompare(Grid &g, int x, int y, int offsetx, int offsety, Point other) {
+    inline Point SingleCompare(Grid &g, Point other,
+                               int x, int y, int offsetx, int offsety) {
         Point self = Get(g, x, y);
         other.dx += offsetx;
         other.dy += offsety;

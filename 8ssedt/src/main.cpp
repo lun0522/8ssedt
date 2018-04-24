@@ -17,7 +17,7 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 #include "original.hpp"
-#include "skip_edge_check.hpp"
+#include "avoid_edge_check.hpp"
 #include "simd_compare.hpp"
 #include "simple_compare.hpp"
 #include "plain_original.hpp"
@@ -47,7 +47,7 @@ int main(int argc, const char * argv[]) {
     std::cout << "Test image size: " << width << "x" << height << std::endl;
     
     run<Original>("original");
-    run<SkipEdgeCheck>("skip_edge_check");
+    run<AvoidEdgeCheck>("avoid_edge_check");
     run<SimdCompare>("simd_compare");
     run<SimpleCompare>("simple_compare");
     

@@ -10,18 +10,18 @@
 #define simd_compare_hpp
 
 #include <immintrin.h>
-#include "skip_edge_check.hpp"
+#include "avoid_edge_check.hpp"
 
-class SimdCompare : public SkipEdgeCheck {
+class SimdCompare : public AvoidEdgeCheck {
 protected:
     void GenerateSDF(Grid &g) override;
-    inline void GroupCompare(Grid &g, int x, int y, const __m256i& offsets) {
-        Point p = Get(g, x, y);
+    inline Point GroupCompare(Grid &g, Point other, int x, int y, const __m256i& offsets) {
+        Point self = Get(g, x, y);
         
         /* Point other = Get( g, x+offsetx, y+offsety ); */
         int *offsetsPtr = (int *)&offsets;
         Point pn[4] = {
-            Get(g, x + offsetsPtr[0], y + offsetsPtr[4]),
+            other,
             Get(g, x + offsetsPtr[1], y + offsetsPtr[5]),
             Get(g, x + offsetsPtr[2], y + offsetsPtr[6]),
             Get(g, x + offsetsPtr[3], y + offsetsPtr[7]),
@@ -42,7 +42,7 @@ protected:
                                                _mm256_mul_epi32(vecPermuted, vecPermuted));
         
         /* if (other.DistSq() < p.DistSq()) p = other; */
-        int64_t prevDist = p.DistSq(), index = -1;
+        int64_t prevDist = self.DistSq(), index = -1;
         for (int i = 0; i < 4; ++i) {
             int64_t dist = *((int64_t *)&vecSqrDists + i);
             if (dist < prevDist) {
@@ -50,7 +50,13 @@ protected:
                 index = i;
             }
         }
-        if (index != -1) Put(g, x, y, { coordsPtr[index], coordsPtr[index + 4] });
+        if (index != -1) {
+            other = { coordsPtr[index], coordsPtr[index + 4] };
+            Put(g, x, y, other);
+            return other;
+        } else {
+            return self;
+        }
     }
 };
 

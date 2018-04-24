@@ -54,13 +54,14 @@ void AllTogether::loadImage(int width, int height, unsigned char* image) {
     }
 }
 
-inline void AllTogether::groupCompare(Grid &g, int x, int y, const __m256i& offsets) {
-    Point p = get(g, x, y);
+inline AllTogether::Point AllTogether::groupCompare(Grid &g, Point other,
+                                                    int x, int y, const __m256i& offsets) {
+    Point self = get(g, x, y);
     
     /* Point other = Get( g, x+offsetx, y+offsety ); */
     int *offsetsPtr = (int *)&offsets;
     Point pn[4] = {
-        get(g, x + offsetsPtr[0], y + offsetsPtr[4]),
+        other,
         get(g, x + offsetsPtr[1], y + offsetsPtr[5]),
         get(g, x + offsetsPtr[2], y + offsetsPtr[6]),
         get(g, x + offsetsPtr[3], y + offsetsPtr[7]),
@@ -81,7 +82,7 @@ inline void AllTogether::groupCompare(Grid &g, int x, int y, const __m256i& offs
                                            _mm256_mul_epi32(vecPermuted, vecPermuted));
     
     /* if (other.DistSq() < p.DistSq()) p = other; */
-    int64_t prevDist = p.distSq(), index = -1;
+    int64_t prevDist = self.distSq(), index = -1;
     for (int i = 0; i < 4; ++i) {
         int64_t dist = *((int64_t *)&vecSqrDists + i);
         if (dist < prevDist) {
@@ -89,10 +90,17 @@ inline void AllTogether::groupCompare(Grid &g, int x, int y, const __m256i& offs
             index = i;
         }
     }
-    if (index != -1) put(g, x, y, { coordsPtr[index], coordsPtr[index + 4] });
+    if (index != -1) {
+        other = { coordsPtr[index], coordsPtr[index + 4] };
+        put(g, x, y, other);
+        return other;
+    } else {
+        return self;
+    }
 }
 
-inline AllTogether::Point AllTogether::singleCompare(Grid &g, int x, int y, int offsetx, int offsety, Point other) {
+inline AllTogether::Point AllTogether::singleCompare(Grid &g, Point other,
+                                                     int x, int y, int offsetx, int offsety) {
     Point self = get(g, x, y);
     other.dx += offsetx;
     other.dy += offsety;
@@ -109,23 +117,25 @@ void AllTogether::generateSDF(Grid &g) {
     // Pass 0
     static const __m256i offsets0 = _mm256_setr_epi32(-1, -1, 0, 1, 0, -1, -1, -1);
     for (int y = 0; y < imageHeight; ++y) {
+        Point prev = get(g, -1, y);
         for (int x = 0; x < imageWidth; ++x)
-            groupCompare(g, x, y, offsets0);
+            prev = groupCompare(g, prev, x, y, offsets0);
         
-        Point prev = empty;
+        prev = get(g, imageWidth, y);
         for (int x = imageWidth - 1; x >= 0; --x)
-            prev = singleCompare(g, x, y, 1, 0, prev);
+            prev = singleCompare(g, prev, x, y, 1, 0);
     }
     
     // Pass 1
     static const __m256i offsets1 = _mm256_setr_epi32(1, -1, 0, 1, 0, 1, 1, 1);
     for (int y = imageHeight - 1; y >= 0; --y) {
+        Point prev = get(g, imageWidth, y);
         for (int x = imageWidth - 1; x >= 0; --x)
-            groupCompare(g, x, y, offsets1);
+            prev = groupCompare(g, prev, x, y, offsets1);
         
-        Point prev = empty;
+        prev = get(g, -1, y);
         for (int x = 0; x < imageWidth; ++x)
-            prev = singleCompare(g, x, y, -1, 0, prev);
+            prev = singleCompare(g, prev, x, y, -1, 0);
     }
 }
 

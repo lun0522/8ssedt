@@ -27,8 +27,8 @@ class AllTogether {
     Point empty = { 16384, 16384 };
     Point get(Grid &g, int x, int y);
     void put(Grid &g, int x, int y, const Point &p);
-    void groupCompare(Grid &g, int x, int y, const __m256i& offsets);
-    Point singleCompare(Grid &g, int x, int y, int offsetx, int offsety, Point other);
+    Point groupCompare(Grid &g, Point other, int x, int y, const __m256i& offsets);
+    Point singleCompare(Grid &g, Point other, int x, int y, int offsetx, int offsety);
     void generateSDF(Grid &g);
 public:
     void loadImage(int width, int height, unsigned char* image);
